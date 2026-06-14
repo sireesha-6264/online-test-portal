@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result - Online Test Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- MVC Scripts -->
+    <script src="js/models/UserModel.js"></script>
+    <script src="js/models/TestModel.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/views/ResultView.js"></script>
+    <script src="js/controllers/ResultController.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userModel = new UserModel();
+            const testModel = new TestModel();
+            const resultView = new ResultView();
+            const resultController = new ResultController(userModel, testModel, resultView);
+            resultController.init();
+        });
+    </script>
+</head>
+<body>
+    <div class="container" style="padding-top: 3rem;">
+        <div id="resultContainer" class="result-card">
+            <h1>Test Result</h1>
+            
+            <div id="resultContent" style="display: none;">
+                <h3 style="margin: 1.5rem 0; color: var(--primary-color);">Student Details</h3>
+                <div class="result-stat">
+                    <strong>Roll Number:</strong> <span id="resRoll"></span>
+                </div>
+                <div class="result-stat">
+                    <strong>Name:</strong> <span id="resName"></span>
+                </div>
+
+                <h3 style="margin: 1.5rem 0; color: var(--primary-color);">Performance</h3>
+                <div class="result-stat">
+                    <strong>Total Questions:</strong> <span id="resTotal"></span>
+                </div>
+                <div class="result-stat">
+                    <strong>Correct Answers:</strong> <span id="resCorrect"></span>
+                </div>
+                <div class="result-stat">
+                    <strong>Wrong Answers:</strong> <span id="resWrong"></span>
+                </div>
+                <div class="result-stat">
+                    <strong>Score:</strong> <span id="resScore"></span>
+                </div>
+                <div class="result-stat">
+                    <strong>Percentage:</strong> <span><span id="resPercent"></span>%</span>
+                </div>
+                
+                <div id="resStatus" class="status-badge"></div>
+            </div>
+
+            <div id="noResultContent" style="display: none;">
+                <p style="font-size: 1.2rem; color: var(--text-muted); margin: 2rem 0;">You have not completed the test yet.</p>
+                <a href="test.html" class="btn btn-primary" style="max-width: 200px; display: inline-block;">Take Test Now</a>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <a href="dashboard.html" class="btn btn-secondary" style="max-width: 200px; display: inline-block; margin-top: 0;">Back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

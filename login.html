@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Online Test Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- MVC Scripts -->
+    <script src="js/models/UserModel.js"></script>
+    <script src="js/models/TestModel.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/views/AuthView.js"></script>
+    <script src="js/controllers/AuthController.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userModel = new UserModel();
+            const authView = new AuthView();
+            const authController = new AuthController(userModel, authView);
+            authController.initLogin();
+        });
+    </script>
+</head>
+<body>
+    <div class="center-form-container">
+        <div class="auth-card">
+            <h1>Login to Portal</h1>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginId">Login ID (Email ID or Roll Number)</label>
+                    <input type="text" id="loginId" class="form-control" required>
+                    <span id="loginIdError" class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" required>
+                    <span id="passwordError" class="error-message"></span>
+                </div>
+                <div id="generalError" class="error-message" style="margin-bottom: 1rem; text-align: center;"></div>
+                
+                <button type="submit" class="btn btn-primary">Login</button>
+                <a href="register.html" class="btn btn-secondary">Register New Account</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
